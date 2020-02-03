@@ -1,0 +1,8 @@
+
+node_modules
+.env
+
+# ignore scss
+# .sass-cache/
+*.css.map
+# *.scss

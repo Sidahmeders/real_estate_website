@@ -1,0 +1,33 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.map-search {
+    background: rgba(218, 218, 218, 0.226);
+    text-align: center;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    .map-chart {
+        display: inline-block;
+        margin-top: 50px;
+    
+        .map-mark {
+            border-radius: 50%;
+            border: none;
+            outline: none;
+            padding: 4px;
+            
+            &:hover {
+                cursor: pointer;
+                border: 2px solid rgb(19, 165, 145);
+                padding: 2px;
+            }
+        }
+    }
+}
+
+
+
