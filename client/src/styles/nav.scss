@@ -98,10 +98,9 @@ nav {
 
         .hidden-span {
             display: inline-block;
-            color: rgb(255, 255, 255);
+            color: rgb(80, 80, 80);
             font-size: 2.2em;
             margin-top: 1vh;
-            text-shadow: 1px 1px 3px black;
             letter-spacing: 3px;
             span {color: rgb(75, 224, 88);}
         }
@@ -111,6 +110,7 @@ nav {
             top: 2%;
             z-index: 99;
             cursor: pointer;
+            
             .line {
                 display: block;
                 margin-top: 4px;

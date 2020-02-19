@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const fileUpload = require('express-fileupload');
 require('dotenv').config();
 
 
@@ -8,7 +9,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
+app.use(fileUpload());
 
+app.use('/', require('./routes/store.routes'));
+app.use('/uploads', require('./routes/fileUpload.routes'));
 app.use('/userLocation', require('./routes/userLoc.routes'));
 
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import NavBar from './components/navbar.component';
 import HomePage from './components/home.component';
+import MapSearch from './components/mapSearch.component';
+import HouseUpload from './components/houseUpload.component';
 import AboutPage from './components/about.component';
-import mapSearch from './components/mapSearch.component';
-
 
 function App() {
 
@@ -13,9 +13,12 @@ function App() {
       <Router>
         <div className="App">
           <NavBar />
-          <Route path="/" exact  component={ HomePage } />
-          <Route path="/mapSearch" component={ mapSearch } />
-          <Route path="/about" component={ AboutPage } />
+          <Switch>
+            <Route path="/" exact  component={ HomePage } />
+            <Route path="/mapSearch" component={ MapSearch } />
+            <Route path="/houseUpload" component={ HouseUpload } />
+            <Route path="/about" component={ AboutPage } />
+          </Switch>
         </div>
       </Router>
     );
