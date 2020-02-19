@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/houseUpload.css';
 import axios from 'axios';
 
@@ -41,6 +42,7 @@ function HouseUpload() {
     }
 
     const onFileSubmit = async e => {
+        e.preventDefault();
 
         const fd = new FormData();
         for(let file in userFiles) {
@@ -66,14 +68,13 @@ function HouseUpload() {
         }
     }
 
-    console.log(userFiles.imgFile);
-
     return(
         <div className="house-upload">
             <h1>HouseUpload</h1>
 
             <div className="house-input-info">
                 <form onSubmit={onFileSubmit}>
+                    
                     <label>Your House Address</label>
                     <input type="text" name="address" required
                     value={userFiles.address} onChange={onHouseDataChange} 
@@ -87,6 +88,7 @@ function HouseUpload() {
                     
                     <button>UpLoad</button>
                 </form>
+                <Link to="/houseUpload/confirm">confirm</Link>
                 {upLoadedFile ? (
                 <>
                 <h1>{upLoadedFile.address}</h1>

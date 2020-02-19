@@ -1,7 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const mongoose = require('mongoose');
 const fileUpload = require('express-fileupload');
+
 require('dotenv').config();
 
 
@@ -10,6 +12,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
 app.use(fileUpload());
+
+const uri = process.env.DATABASE_KEY;
+mongoose.connect(process.env.MONGODB_URI || uri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.set('useCreateIndex', true);
+const db = mongoose.connection;
+db.once('open', () => console.log('mongoDB connection is Up and running...'));
 
 app.use('/', require('./routes/store.routes'));
 app.use('/uploads', require('./routes/fileUpload.routes'));
@@ -25,6 +33,5 @@ if(process.env.NODE_ENV === 'production') {
 
 
 const port = process.env.PORT || 5000;
-
 
 app.listen(port, () => console.log(`listening on port ${port}`));

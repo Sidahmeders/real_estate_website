@@ -52,7 +52,7 @@ function NavBar() {
             <a href="/"><h2>So<span>kn</span>aa</h2></a>
           </div>
           <div className="nav-links-items signUp">
-            <p><a href="ki.com">SignUp or Login</a></p>
+            <p><a href="/ki.com">SignUp or Login</a></p>
           </div>
         </div>   
 
