@@ -11,25 +11,25 @@ function HouseUpload() {
         const [locState, setState] = useState(JSON.parse(myHouse));
 
         const setLocState = newItem => {
-            localStorage.setItem("newHouse", newItem);
+            localStorage.setItem("newHouse", JSON.stringify(newItem));
             setState(newItem);
         }
 
         return [locState, setLocState];
     }
 
-    const [userFiles, setUserFiles] = useState({
-        imgFile: "",
-        address: "",
-        number: ""
-    });
-
     const [upLoadedFile, setUpLoadedFile] = useLocalState({});
+
+    const [userFiles, setUserFiles] = useState({
+        file: "",
+        address: "",
+        phoneNumber: ""
+    });
 
     const onFileChange = e => {
         setUserFiles({
             ...userFiles,
-            imgFile: e.target.files[0]
+            file: e.target.files[0]
         });
     }
 
@@ -56,11 +56,11 @@ function HouseUpload() {
                 }
             });
 
-            const {address, number, imgPath} = res.data;
-            setUpLoadedFile(JSON.stringify({address, number, imgPath}));
+            const {address, phoneNumber, base64String} = res.data;
+            setUpLoadedFile({address, phoneNumber, base64String});
 
         } catch(err) {
-            if(err.response.status === 500) {
+            if(err) {
                 console.log('this is Server problem');
             } else {
                 console.log(err.response.data.msg);
@@ -74,17 +74,17 @@ function HouseUpload() {
 
             <div className="house-input-info">
                 <form onSubmit={onFileSubmit}>
-                    
+
                     <label>Your House Address</label>
                     <input type="text" name="address" required
                     value={userFiles.address} onChange={onHouseDataChange} 
                     />
                     <label>Your Phone number</label>
-                    <input type="number" name="number" required
+                    <input type="number" name="phoneNumber" required
                     value={userFiles.number} onChange={onHouseDataChange}
                     />
                     <label>Upload your House image</label>
-                    <input type="file" name="imgFile" onChange={onFileChange} required/>
+                    <input type="file" name="file" onChange={onFileChange} required/>
                     
                     <button>UpLoad</button>
                 </form>
@@ -92,8 +92,8 @@ function HouseUpload() {
                 {upLoadedFile ? (
                 <>
                 <h1>{upLoadedFile.address}</h1>
-                <img width="450px" src={upLoadedFile.imgPath} alt="myfile" />
-                <h4>phone: {upLoadedFile.number}</h4>
+                <img width="450px" src={`data:image/png;base64,${upLoadedFile.base64String}`} alt="myfile" />
+                <h4>phone: {upLoadedFile.phoneNumber}</h4>
                 </>): 
                 (<h3>no file is provided</h3>)
                 }
