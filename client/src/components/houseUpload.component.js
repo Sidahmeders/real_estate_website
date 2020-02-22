@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/houseUpload.css';
+import '../styles/houseUpload/houseUpload.css';
 import axios from 'axios';
 
 
@@ -22,6 +22,7 @@ function HouseUpload() {
 
     const [userFiles, setUserFiles] = useState({
         file: "",
+        tempFile: "",
         address: "",
         phoneNumber: ""
     });
@@ -29,7 +30,8 @@ function HouseUpload() {
     const onFileChange = e => {
         setUserFiles({
             ...userFiles,
-            file: e.target.files[0]
+            file: e.target.files[0],
+            tempFile: URL.createObjectURL(e.target.files[0])
         });
     }
 
@@ -67,6 +69,7 @@ function HouseUpload() {
             }
         }
     }
+    console.log(userFiles.file)
 
     return(
         <div className="house-upload">
@@ -89,14 +92,9 @@ function HouseUpload() {
                     <button>UpLoad</button>
                 </form>
                 <Link to="/houseUpload/confirm">confirm</Link>
-                {upLoadedFile ? (
-                <>
-                <h1>{upLoadedFile.address}</h1>
-                <img width="450px" src={`data:image/png;base64,${upLoadedFile.base64String}`} alt="myfile" />
-                <h4>phone: {upLoadedFile.phoneNumber}</h4>
-                </>): 
-                (<h3>no file is provided</h3>)
-                }
+                <h1>{userFiles.address}</h1>
+                <img width="450px" src={userFiles.tempFile} alt="myfile" />
+                <h4>phone: {userFiles.phoneNumber}</h4>
             </div>
 
             <div className="undefined">

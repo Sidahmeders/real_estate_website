@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import '../styles/home.css';
-import homeImage from '../homes-img/head-home.jpg';
+import '../styles/home/home.css';
+
 
 function Home() {
 
@@ -25,8 +26,18 @@ function Home() {
 
         <header>
           <div className="head-img">
-            <img src={homeImage} alt="home" width="100%"/>
-            <h2>the Home you're looking For</h2>
+            <div className="head-img-text">
+              <h1>the Home you're looking For</h1>
+              <h2>we help you find the place you love to live in</h2>
+            </div>
+            <div className="head-search">
+              <div className="search-bar">
+                <input type="text" className="search-input" placeholder="search an address, neighborhood, or city" />
+                <Link to="/mapSearch" className="search-icon">
+                  <i className="fa fa-search"></i>
+                </Link>
+              </div>
+            </div>
           </div>
         </header>
 

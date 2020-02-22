@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactMapGl, { Marker, NavigationControl, Popup } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import '../styles/mapSearch.css';
+import '../styles/mapSearch/mapSearch.css';
 import addressSvg from '../homes-img/address.svg';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng} from 'react-places-autocomplete';
 

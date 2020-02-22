@@ -1,4 +1,5 @@
 import React from 'react';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import NavBar from './components/navbar.component';

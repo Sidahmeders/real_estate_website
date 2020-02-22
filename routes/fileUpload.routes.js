@@ -1,8 +1,7 @@
 const express = require('express');
-const fs = require('fs');
-const path = require('path');
 const UserInfo = require('../models/userInfo.model');
-
+// const fs = require('fs');
+// const path = require('path');
 
 const router = express.Router();
 
@@ -54,5 +53,7 @@ router.post('/', async (req, res) => {
     }
 
 });
+
+
 
 module.exports = router;
