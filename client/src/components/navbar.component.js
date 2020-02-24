@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import '../styles/navBar/nav.css';
 
 
@@ -29,6 +30,11 @@ function NavBar() {
 
   }
 
+  const location = useLocation();
+    useEffect(() => {
+        toggleMenu();
+    },[location.pathname]);
+
 
   return (
     <div>
@@ -41,7 +47,9 @@ function NavBar() {
           <span id="line" className="line"></span>
         </div>
 
-        <span id="hidden" className="hidden-span">So<span>kn</span>aa</span>
+        <span id="hidden" className="hidden-span">
+          <a href="/">So<span>kn</span>aa</a>
+        </span>
         
         <div id="navLinks" className="nav-links">
           <div className="nav-links-items ul-items">
@@ -57,7 +65,7 @@ function NavBar() {
                 </ul>
               </li>
               <li>
-                <Link to="/houseUpload">rent</Link><i className="fa fa-chevron-down"></i>
+                <Link to="/about">rent</Link><i className="fa fa-chevron-down"></i>
                 <ul>
                   <li>All Rentals</li>
                   <li>Apartments for Rent</li>
@@ -68,7 +76,7 @@ function NavBar() {
                 </ul>
               </li>
               <li>
-                <Link to="/about">sale</Link><i className="fa fa-chevron-down"></i>
+                <Link to="/houseUpload">sale</Link><i className="fa fa-chevron-down"></i>
                 <ul>
                   <li>Sale your Proprietary</li>
                   <li>Explore your options</li> 

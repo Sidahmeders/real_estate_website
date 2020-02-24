@@ -20,6 +20,6 @@ const userInfoSchema = new Schema({
     }
 });
 
-const userInfo = mongoose.model('usersHouseInfo', userInfoSchema);
+const UsersInfo = mongoose.model('usersInfo', userInfoSchema);
 
-module.exports = userInfo;
+module.exports = UsersInfo;

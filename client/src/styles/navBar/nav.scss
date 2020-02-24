@@ -123,10 +123,11 @@ nav {
 
         .hidden-span {
             display: inline-block;
-            color: rgb(80, 80, 80);
+            z-index: 99;
             font-size: 2.2em;
             margin-top: 1vh;
             letter-spacing: 3px;
+            a {color: rgb(80, 80, 80); text-decoration: none;}
             span {color: rgb(75, 224, 88);}
         }
         .menu-lines {
@@ -157,6 +158,7 @@ nav {
         }
         .nav-links {
             position: fixed;
+            z-index: 90;
             width: 100%;
             flex-direction: column;
             clip-path: circle(10px at 99% -10%);

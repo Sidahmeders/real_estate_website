@@ -150,10 +150,14 @@ nav .nav-links .signUp a:hover {
   }
   nav .hidden-span {
     display: inline-block;
-    color: #505050;
+    z-index: 99;
     font-size: 2.2em;
     margin-top: 1vh;
     letter-spacing: 3px;
+  }
+  nav .hidden-span a {
+    color: #505050;
+    text-decoration: none;
   }
   nav .hidden-span span {
     color: #4be058;
@@ -191,6 +195,7 @@ nav .nav-links .signUp a:hover {
   }
   nav .nav-links {
     position: fixed;
+    z-index: 90;
     width: 100%;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;

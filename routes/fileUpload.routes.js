@@ -1,11 +1,12 @@
 const express = require('express');
 const UserInfo = require('../models/userInfo.model');
+const router = express.Router();
+const auth = require('../middleware/auth');
 // const fs = require('fs');
 // const path = require('path');
 
-const router = express.Router();
-
-router.post('/', async (req, res) => {
+ 
+router.post('/', auth, async (req, res) => {
     if(req.files === null) {
         return res.status(400).json({msg: "no file was uploaded"});
     }
@@ -54,6 +55,18 @@ router.post('/', async (req, res) => {
 
 });
 
+router.get('/', async (req, res) => {
+    const usersInfo = await UserInfo.find();
+
+    try {
+        res.status(200).json({usersInfo: usersInfo});
+        console.log('getting usersInfo successfuly');
+    } catch(err) {
+        if(err) throw err;
+        res.status(500).json({msg: "there was a problem getting usersInfo"});
+        console.log(usersInfo);
+    }
+});
 
 
 module.exports = router;

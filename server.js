@@ -22,6 +22,7 @@ db.once('open', () => console.log('mongoDB connection is Up and running...'));
 app.use('/', require('./routes/store.routes'));
 app.use('/uploads', require('./routes/fileUpload.routes'));
 app.use('/userLocation', require('./routes/userLoc.routes'));
+app.use('/users', require('./routes/users.routes'));
 
 
 if(process.env.NODE_ENV === 'production') {
