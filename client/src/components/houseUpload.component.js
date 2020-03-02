@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/houseUpload/houseUpload.css';
 import axios from 'axios';
+import { ContextConsumer } from '../context';
+import ErrorMsg from './auth/errorMsg';
 
 
 function HouseUpload() {
+
+    const context = useContext(ContextConsumer);
+    const { auth } = context;
+    const { token } = auth;
 
     const useLocalState = () => {
         const myHouse = localStorage.getItem("newHouse");
@@ -54,7 +60,8 @@ function HouseUpload() {
         try {
             const res = await axios.post('http://localhost:5000/uploads', fd, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data',
+                    'x-auth-token': token
                 }
             });
 
@@ -94,12 +101,10 @@ function HouseUpload() {
                 <h1>{userFiles.address}</h1>
                 <img width="450px" src={userFiles.tempFile} alt="myfile" />
                 <h4>phone: {userFiles.phoneNumber}</h4>
+                <div className="err-msg">
+                    <ErrorMsg />
+                </div>
             </div>
-
-            <div className="undefined">
-               
-            </div>
-
         </div>
     );
 }

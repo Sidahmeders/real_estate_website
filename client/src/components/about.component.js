@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import { HousesConsumer } from '../context';
+import { ContextConsumer } from '../context';
 
 
 function About() {
 
-  const value = useContext(HousesConsumer);
-  const usersInfo = value.houses.usersInfo;
+  const context = useContext(ContextConsumer);
+  const usersInfo = context.houses.usersInfo;
   
-  console.log(value)
+  // !console.log(context);
     return(
        <div className="about-page">
          <h1>THE ABOUT PAGE</h1>

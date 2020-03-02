@@ -20,7 +20,7 @@ function Home() {
     fetchData();
   },[])
 
-  // console.log(userLoc);
+  //! console.log(userLoc);
   return(
       <div className="home-page">
 

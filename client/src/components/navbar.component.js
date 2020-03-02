@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router';
 import '../styles/navBar/nav.css';
+import { ContextConsumer } from '../context';
 
 
 function NavBar() {
+
+  const context = useContext(ContextConsumer);
+  const {auth} = context;
  
   let isTrue = false;
-  
   const toggleMenu = () => {
 
     const navLink = document.getElementById("navLinks");
@@ -90,9 +93,20 @@ function NavBar() {
           <div className="nav-links-items sokna">
             <a href="/"><h2>So<span>kn</span>aa</h2></a>
           </div>
-          <div className="nav-links-items signUp">
-            <p><a href="/ki.com">SignUp or Login</a></p>
-          </div>
+          {!auth.token ?
+            ( 
+             <div className="nav-links-items signUp">
+                <p><a href="/login">SignUp or Login</a></p>
+             </div>
+           ) :
+           (
+             <div className="nav-links-items user-details">
+               <Link className="link" to="/userDetails">
+               </Link>
+               <span>{auth.user ? auth.user.name.split(' ')[0] : "..."}</span>
+             </div>
+           )
+          }  
         </div>   
 
       </nav>

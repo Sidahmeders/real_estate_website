@@ -7,10 +7,14 @@ const auth = require('../middleware/auth');
 
 
 router.post('/register', (req, res) => {
-    const {name, email, password} = req.body;
+    const {name, phoneNumber, email, password, password2, userType} = req.body;
 
-    if(!name || !email ||!password) {
+    if(!name|| !phoneNumber|| !email|| !password|| !password2|| !userType) {
         return res.status(400).json({msg: "Please fill in all the required fields"})
+    }
+
+    if(password !== password2) {
+        return res.status(400).json({ msg: "your password did not Match"})
     }
 
     User.findOne({email})
@@ -18,7 +22,7 @@ router.post('/register', (req, res) => {
         if(user) return res.status(400).json({msg: "this Email Already Exist"});
 
         const newUser = new User({
-            name, email, password
+            name, phoneNumber, email, password, userType
         });
 
         bcrypt.genSalt(10, (err, salt) => {
@@ -92,6 +96,7 @@ router.get('/auth/user', auth, (req, res) => {
     User.findById(req.user.id)
     .select('-password')
     .then(user => res.status(200).json(user))
+    .catch(err => res.status.status(400).json({err}));
 });
 
 

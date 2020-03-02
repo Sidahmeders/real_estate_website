@@ -1,0 +1,139 @@
+.register {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.register .register-svg {
+  background: url("../../../../homes-img/svgs/two_authentication.svg");
+  background-size: contain;
+  width: 200px;
+  height: 130px;
+}
+
+.register .register-form {
+  margin-top: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.register .register-form h2 {
+  color: #18ce27;
+  font-size: 34px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.register .register-form form {
+  background-color: #f0f0f0;
+  padding: 30px 20px;
+  border-radius: 10px;
+}
+
+.register .register-form form div {
+  height: 10vh;
+}
+
+.register .register-form form label {
+  color: #4b4b4b;
+  font-size: 25px;
+  float: left;
+  padding: 0 35px 0 20px;
+}
+
+.register .register-form form input {
+  outline: none;
+  border: 1px solid #f0f0f0;
+  padding: 5px 10px;
+  font-size: 24px;
+  background-color: #fafafa;
+  float: right;
+}
+
+.register .register-form form ::-webkit-input-placeholder {
+  color: #979797;
+  font-weight: 100;
+}
+
+.register .register-form form :-ms-input-placeholder {
+  color: #979797;
+  font-weight: 100;
+}
+
+.register .register-form form ::-ms-input-placeholder {
+  color: #979797;
+  font-weight: 100;
+}
+
+.register .register-form form ::placeholder {
+  color: #979797;
+  font-weight: 100;
+}
+
+.register .register-form form select {
+  float: right;
+  width: 60%;
+  height: 35px;
+  border: 1px solid #cccccc;
+  background-color: #f8f8f8;
+  color: #4b4b4b;
+  font-size: 16px;
+  padding: 0 10px;
+}
+
+.register .register-form form button {
+  display: inline-block;
+  width: 150px;
+  height: 34px;
+  border: 0;
+  border-radius: 3px;
+  background: #0c9c60;
+  color: white;
+  font-size: 20px;
+  -webkit-transition: .8s ease;
+  transition: .8s ease;
+}
+
+.register .register-form form button:hover {
+  cursor: pointer;
+  background: #3dca73;
+}
+
+.register .register-form .hide {
+  display: none;
+}
+
+.register .house-svg {
+  background: url("../../../../homes-img/svgs/add_house.svg");
+  background-size: contain;
+  width: 200px;
+  height: 100px;
+}
+
+@media (max-width: 850px) {
+  .register {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    padding: 10px 50px;
+  }
+}
+/*# sourceMappingURL=register.css.map */

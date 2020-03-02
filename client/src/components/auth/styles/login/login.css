@@ -1,0 +1,29 @@
+.login-modal {
+  margin-top: 1.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login-modal h2 {
+  color: grey;
+  font-weight: 400;
+}
+
+.login-modal .login-svg {
+  width: 120px;
+  height: 159px;
+  background: url("../../../../homes-img/svgs/login.svg");
+  background-size: contain;
+}
+/*# sourceMappingURL=login.css.map */

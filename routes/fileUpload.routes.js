@@ -11,7 +11,7 @@ router.post('/', auth, async (req, res) => {
         return res.status(400).json({msg: "no file was uploaded"});
     }
 
-    //! this is for file system storage
+    //* this is for file system storage
     // const {file} = req.files;
     // const userInfo = {...req.body, imgPath: `/uploads/housesImg/${file.name}`}
     

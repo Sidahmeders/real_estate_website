@@ -1,30 +1,47 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { HousesProvider } from './context';
+import { ContextConsumer } from './context';
 
 import NavBar from './components/navbar.component';
 import HomePage from './components/home.component';
 import MapSearch from './components/mapSearch.component';
 import HouseUpload from './components/houseUpload.component';
+import Login from './components/auth/login';
+import Register from './components/auth/registerModal';
+import UserDetails from './components/auth/userDetails';
 import AboutPage from './components/about.component';
+
+import { loadUser } from './reducers/actions/authAction';
+import { tokenConfig } from './reducers/actions/authAction';
+
 
 function App() {
 
+  const context = useContext(ContextConsumer);
+  const {dispatchAuth, dispatchErr, auth} = context;
+  console.log(auth)
+
+  useEffect(() => {
+    loadUser(dispatchAuth, dispatchErr, tokenConfig());
+  },[]);
+
+
     return (
-      <HousesProvider>
-        <Router>
-          <div className="App">
-            <NavBar />
-            <Switch>
-              <Route path="/" exact  component={ HomePage } />
-              <Route path="/mapSearch" component={ MapSearch } />
-              <Route path="/houseUpload" component={ HouseUpload } />
-              <Route path="/about" component={ AboutPage } />
-            </Switch>
-          </div>
-        </Router>
-      </HousesProvider>
+      <Router>
+        <div className="App">
+          <NavBar />
+          <Switch>
+            <Route path="/" exact  component={ HomePage } />
+            <Route path="/mapSearch" component={ MapSearch } />
+            <Route path="/houseUpload" component={ HouseUpload } />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={ Register } />
+            <Route path="/userDetails" component={ UserDetails } />
+            <Route path="/about" component={ AboutPage } />
+          </Switch>
+        </div>
+      </Router>
     );
 }
 
