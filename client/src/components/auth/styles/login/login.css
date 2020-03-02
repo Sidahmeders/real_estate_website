@@ -26,4 +26,8 @@
   background: url("../../../../homes-img/svgs/login.svg");
   background-size: contain;
 }
+
+.login-modal .hide {
+  display: none;
+}
 /*# sourceMappingURL=login.css.map */

@@ -9,15 +9,12 @@ function UserDetails() {
     const user = auth.user;
 
     const onLogOut = () => {
-        setTimeout(() => {
-            dispatchAuth({
-                type: "LOGOUT_SUCCESS"
-            });
-        }, 600);
+        dispatchAuth({
+            type: "LOGOUT_SUCCESS"
+        });
         window.location = "/";
     };
     
-
     return (
         <div className="user-details">
             {user ? 

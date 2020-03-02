@@ -49,7 +49,7 @@ router.post('/register', (req, res) => {
                         }
                     )
                 })
-                .catch(err => console.log(err)) 
+                .catch(err => console.log(err));
             });
         });
     });
@@ -88,6 +88,7 @@ router.post('/auth', (req, res) => {
                 }
             )
        })
+       .catch(err => console.log(err));
     });
 
 });
@@ -96,7 +97,7 @@ router.get('/auth/user', auth, (req, res) => {
     User.findById(req.user.id)
     .select('-password')
     .then(user => res.status(200).json(user))
-    .catch(err => res.status.status(400).json({err}));
+    .catch(err => console.log(err));
 });
 
 

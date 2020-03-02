@@ -96,7 +96,7 @@ function NavBar() {
           {!auth.token ?
             ( 
              <div className="nav-links-items signUp">
-                <p><a href="/login">SignUp or Login</a></p>
+                <Link className="link" to="/login">SignUp or Login</Link>
              </div>
            ) :
            (

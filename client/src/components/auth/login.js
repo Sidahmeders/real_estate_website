@@ -1,8 +1,10 @@
 import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import './styles/login/login.css';
 import { ContextConsumer } from '../../context';
 import { loginUser } from '../../reducers/actions/authAction';
 import ErrorMsg from './errorMsg';
+import { showErr } from './errorMsg';
 
 
 function LoginModal() {
@@ -23,21 +25,22 @@ function LoginModal() {
         });
     };
 
-const onFormSubmit = e => {
-    e.preventDefault();
-    
-    const {email, password} = loginModal;
-    const user = {email, password};
-    loginUser(user, dispatchAuth, dispatchErr);
-    setTimeout(() => {
-        setLoginModal(() => {
-            return {
-                email: "",
-                password: ""
-            }
-        });
-    },2500);
-}
+    const onFormSubmit = e => {
+        e.preventDefault();
+        
+        const {email, password} = loginModal;
+        const user = {email, password};
+        loginUser(user, dispatchAuth, dispatchErr);
+        setTimeout(() => {
+            setLoginModal(() => {
+                return {
+                    email: "",
+                    password: ""
+                }
+            });
+        },2500);
+        showErr();
+    }
 
     return (
         <div className="login-modal">
@@ -52,8 +55,8 @@ const onFormSubmit = e => {
                   value={loginModal.password} onChange={onUserDetailsChange} />
                 <button>Login</button>
             </form>
-            <a href="/register">Register</a>
-            <div className="err-msg">
+            <Link to="/register">Register</Link>
+            <div id="err-msg" className="hide">
                 <ErrorMsg />
             </div>
         </div>

@@ -1,6 +1,12 @@
 import React, { useContext } from 'react';
 import { ContextConsumer } from '../../context';
 
+export const showErr = () => {
+    document.getElementById('err-msg').classList.remove("hide");
+    setTimeout(() => {
+        document.getElementById('err-msg').classList.add("hide");
+    },4000);
+};
 
 function ErrorMsg() {
 

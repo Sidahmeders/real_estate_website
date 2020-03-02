@@ -1,4 +1,4 @@
-.register {
+.register .register-modal {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9,14 +9,14 @@
           align-items: center;
 }
 
-.register .register-svg {
+.register .register-modal .register-svg {
   background: url("../../../../homes-img/svgs/two_authentication.svg");
   background-size: contain;
   width: 200px;
   height: 130px;
 }
 
-.register .register-form {
+.register .register-modal .register-form {
   margin-top: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -34,31 +34,31 @@
   text-align: center;
 }
 
-.register .register-form h2 {
+.register .register-modal .register-form h2 {
   color: #18ce27;
   font-size: 34px;
   font-weight: 400;
   margin-bottom: 5px;
 }
 
-.register .register-form form {
+.register .register-modal .register-form form {
   background-color: #f0f0f0;
   padding: 30px 20px;
   border-radius: 10px;
 }
 
-.register .register-form form div {
+.register .register-modal .register-form form div {
   height: 10vh;
 }
 
-.register .register-form form label {
+.register .register-modal .register-form form label {
   color: #4b4b4b;
   font-size: 25px;
   float: left;
   padding: 0 35px 0 20px;
 }
 
-.register .register-form form input {
+.register .register-modal .register-form form input {
   outline: none;
   border: 1px solid #f0f0f0;
   padding: 5px 10px;
@@ -67,27 +67,27 @@
   float: right;
 }
 
-.register .register-form form ::-webkit-input-placeholder {
+.register .register-modal .register-form form ::-webkit-input-placeholder {
   color: #979797;
   font-weight: 100;
 }
 
-.register .register-form form :-ms-input-placeholder {
+.register .register-modal .register-form form :-ms-input-placeholder {
   color: #979797;
   font-weight: 100;
 }
 
-.register .register-form form ::-ms-input-placeholder {
+.register .register-modal .register-form form ::-ms-input-placeholder {
   color: #979797;
   font-weight: 100;
 }
 
-.register .register-form form ::placeholder {
+.register .register-modal .register-form form ::placeholder {
   color: #979797;
   font-weight: 100;
 }
 
-.register .register-form form select {
+.register .register-modal .register-form form select {
   float: right;
   width: 60%;
   height: 35px;
@@ -98,10 +98,11 @@
   padding: 0 10px;
 }
 
-.register .register-form form button {
+.register .register-modal .register-form form button {
   display: inline-block;
-  width: 150px;
-  height: 34px;
+  width: 140px;
+  height: 36px;
+  padding-bottom: 3px;
   border: 0;
   border-radius: 3px;
   background: #0c9c60;
@@ -111,16 +112,34 @@
   transition: .8s ease;
 }
 
-.register .register-form form button:hover {
+.register .register-modal .register-form form button:hover {
   cursor: pointer;
   background: #3dca73;
 }
 
-.register .register-form .hide {
+.register .register-modal .register-form form a {
+  border: 2px solid green;
+  text-decoration: none;
+  color: green;
+  padding: 3px 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.register .register-modal .register-form form p {
+  color: green;
+  font-size: 20px;
+  border: 1px solid green;
+  border-radius: 3px;
+  padding: 5px 30px;
+  display: inline-block;
+}
+
+.register .register-modal .register-form .hide {
   display: none;
 }
 
-.register .house-svg {
+.register .register-modal .house-svg {
   background: url("../../../../homes-img/svgs/add_house.svg");
   background-size: contain;
   width: 200px;
@@ -128,12 +147,12 @@
 }
 
 @media (max-width: 850px) {
-  .register {
+  .register-modal {
     -webkit-box-orient: vertical !important;
     -webkit-box-direction: normal !important;
         -ms-flex-direction: column !important;
             flex-direction: column !important;
-    padding: 10px 50px;
+    padding: 10px 50px !important;
   }
 }
 /*# sourceMappingURL=register.css.map */
