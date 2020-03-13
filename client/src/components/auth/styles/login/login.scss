@@ -6,18 +6,112 @@
     justify-content: center;
     align-items: center;
 
+    .hide {
+        display: none;
+    }
     h2 {
         color: grey;
         font-weight: 400;
     }
     .login-svg {
-        width: 120px;
-        height: 159px;
-        background: url('../../../../homes-img/svgs/login.svg');
+        width: 200px;
+        height: 140px;
+        background: url('../../../../homes-img/svgs/login_auth.svg');
         background-size: contain;
     }
-    .hide {
-        display: none;
+    .login-form {
+        width: 50%;
+        margin-top: 1em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        form {
+            width: 100%;
+            background: rgb(240, 240, 240);
+            padding: 30px 20px;
+            border-radius: 10px;
+
+            div {
+                width: 96%;
+                height: 10vh;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                label {
+                    color: rgb(75, 75, 75);
+                    font-size: 25px;
+                    padding: 0 25px 0 20px;
+                    float: left;
+                }
+                input {
+                    outline: none;
+                    border: 1px solid rgb(240, 240, 240);
+                    font-size: 24px;
+                    background-color: rgb(250, 250, 250);
+                    padding: 5px 10px;
+                    float: right;
+                    width: 68%;
+                }
+            }
+            button {
+                display: inline-block;
+                width: 140px;
+                height: 36px;
+                margin-top: 20px;
+                padding-bottom: 3px;
+                border: 0;
+                border-radius: 3px;
+                background: rgb(12, 156, 96);
+                color: white;
+                font-size: 20px;
+                transition: .8s ease;
+                
+                &:hover {
+                    cursor: pointer;
+                    background: rgb(61, 202, 115);
+                }
+            }
+            ::placeholder {
+                color: rgb(151, 151, 151);
+                font-weight: 100;
+            }
+        }
     }
+    .link {
+        margin: 20px 0;
+        font-size: 18px;
+        color: rgb(133, 133, 133);
+
+        .link {
+            font-size: 25px;
+            color: green;
+        }
+    }
+    .forgot-password {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+
+        &-svg {
+            display: inline-block;
+            margin-top: 1em;
+            width: 70px;
+            height: 50px;
+            background: url('../../../../homes-img/svgs/forgot_password.svg');
+            background-size: contain;
+        }
+        p {
+            color: rgb(172, 79, 79);
+            font-size: 18px;
+            transition: .5s ease;
+        }
+        &:hover {
+            p {color: red;}
+        }
+    }
+    
 }
 

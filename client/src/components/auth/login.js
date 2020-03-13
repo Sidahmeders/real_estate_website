@@ -10,15 +10,16 @@ import { showErr } from './errorMsg';
 function LoginModal() {
 
     const context = useContext(ContextConsumer);
-    const {dispatchAuth, dispatchErr, auth} = context;
+    const {dispatchAuth, dispatchErr} = context;
 
     const [loginModal, setLoginModal] = useState({
         email: "",
-        password: ""
+        password: "",
+        isWaiting: false
     });
 
     const onUserDetailsChange = e => {
-        const value = e.target.value;
+        let value = e.target.value;
         setLoginModal({
             ...loginModal,
             [e.target.name]: value
@@ -27,7 +28,13 @@ function LoginModal() {
 
     const onFormSubmit = e => {
         e.preventDefault();
-        
+         
+        setLoginModal(() => {
+            return {
+                ...loginModal,
+                isWaiting: true
+            }
+        });
         const {email, password} = loginModal;
         const user = {email, password};
         loginUser(user, dispatchAuth, dispatchErr);
@@ -35,29 +42,52 @@ function LoginModal() {
             setLoginModal(() => {
                 return {
                     email: "",
-                    password: ""
+                    password: "",
+                    isWaiting: false
                 }
             });
-        },2500);
-        showErr();
+            showErr();
+        },3000);    
     }
 
     return (
         <div className="login-modal">
-            <h2>Login</h2>
-            <div className="login-svg"></div>
-            <form className="login-modal" onSubmit={onFormSubmit}>
-                <label>Email</label>
-                <input type="email" name="email" placeholder="email"
-                  value={loginModal.email} onChange={onUserDetailsChange} />
-                <label>Password</label>
-                <input type="password" name="password" placeholder="password"
-                  value={loginModal.password} onChange={onUserDetailsChange} />
-                <button>Login</button>
-            </form>
-            <Link to="/register">Register</Link>
-            <div id="err-msg" className="hide">
-                <ErrorMsg />
+            <div className="login-form">
+                <div id="err-msg" className="hide">
+                    <ErrorMsg />
+                </div>
+                <h2>Login</h2>
+                <div className="login-svg"></div>
+                <form className="login-modal" onSubmit={onFormSubmit}>
+                    <div>
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="email"
+                        value={loginModal.email} onChange={onUserDetailsChange} />
+                    </div>
+                    <div>
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="password"
+                        value={loginModal.password} onChange={onUserDetailsChange} />
+                    </div>
+                    {!loginModal.isWaiting ? 
+                    (
+                        <button>Login</button>
+                    ) : 
+                    (
+                        <p>please wait...</p>
+                    )}
+                </form>
+            </div>
+            <div>
+                <Link className="forgot-password" to="/forgotpassword">
+                    <div className="forgot-password-svg">
+                    </div>
+                    <p>forgot password?</p>
+                </Link>
+            </div>
+            <div className="link">
+                <span>Don't have an Account </span>
+                <Link className="link" to="/register">Register</Link>
             </div>
         </div>
     );

@@ -9,15 +9,19 @@ function Home() {
   const [userLoc, setUserLoc] = useState({});
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-       const userLoc = await axios.get('http://localhost:5000/userLocation');
-       setUserLoc(userLoc.data);
-      } catch(err) {
-        console.log(err)
+    let mounted = false;
+    if(!mounted) {
+      const fetchData = async () => {
+        try {
+         const userLoc = await axios.get('http://localhost:5000/userLocation');
+         setUserLoc(userLoc.data);
+        } catch(err) {
+          console.log(err)
+        }
       }
+      fetchData();
     }
-    fetchData();
+    return () => mounted = true;
   },[])
 
   //! console.log(userLoc);

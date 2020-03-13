@@ -14,21 +14,23 @@ function ContextProvider(props) {
     const [houses, setHouses] = useState({});
 
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await axios.get('http://localhost:5000/uploads', {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
+        let mounted = false;
+        if(!mounted) {
+            const fetchData = async () => {
+                const response = await axios.get('http://localhost:5000/uploads', {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+                try {
+                    setHouses(() => response.data);
+                } catch(err) {
+                    if(err) console.log(err);
                 }
-            });
-            try {
-                setHouses(() => response.data);
-            } catch(err) {
-                if(err) throw err;
-                console.log(err);
             }
+            fetchData();
         }
-
-        fetchData();
+        return () => mounted = true;
     },[]);
 
     return (

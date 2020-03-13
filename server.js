@@ -14,10 +14,13 @@ app.use(express.urlencoded({ extended: false}));
 app.use(fileUpload());
 
 const uri = process.env.DATABASE_KEY;
-mongoose.connect(process.env.MONGODB_URI || uri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI || uri, { 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true }, () => {
+    console.log('mongoDB connection is Up and running...')
+})
+.catch(err => console.log(err));
 mongoose.set('useCreateIndex', true);
-const db = mongoose.connection;
-db.once('open', () => console.log('mongoDB connection is Up and running...'));
 
 app.use('/', require('./routes/store.routes'));
 app.use('/uploads', require('./routes/fileUpload.routes'));

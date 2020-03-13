@@ -6,7 +6,10 @@ import {
     LOGIN_FAIL,
     LOGOUT_SUCCESS,
     REGISTER_SUCCESS,
-    REGISTER_FAIL
+    PASSWORD_RESET_FAIL,
+    REGISTER_FAIL,
+    EMAIL_CHECKOUT_FAIL,
+    EMAIL_CHECKOUT_SUCCESS
 } from './types';
 
 
@@ -14,7 +17,8 @@ export const authState = {
     token: localStorage.getItem('token'),
     isAuth: null,
     isLoading: false,
-    user: null
+    user: null,
+    tempToken: null
 };
 
 export const authReducer = (state, action) => {
@@ -40,10 +44,17 @@ export const authReducer = (state, action) => {
                 isAuth: true,
                 isLoading: false
             };
+        case EMAIL_CHECKOUT_SUCCESS:
+            return {
+                ...authState,
+                tempToken: action.payload.token
+            };
         case AUTH_EOROR:
         case LOGIN_FAIL:
         case LOGOUT_SUCCESS:
         case REGISTER_FAIL:
+        case EMAIL_CHECKOUT_FAIL:
+        case PASSWORD_RESET_FAIL:
             localStorage.removeItem('token');
             return {
                 ...authState,

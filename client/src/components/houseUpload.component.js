@@ -4,6 +4,7 @@ import '../styles/houseUpload/houseUpload.css';
 import axios from 'axios';
 import { ContextConsumer } from '../context';
 import ErrorMsg from './auth/errorMsg';
+import { showErr } from './auth/errorMsg';
 
 
 function HouseUpload() {
@@ -39,7 +40,7 @@ function HouseUpload() {
             file: e.target.files[0],
             tempFile: URL.createObjectURL(e.target.files[0])
         });
-    }
+    };
 
     const onHouseDataChange = e => {
         const value = e.target.value;
@@ -47,7 +48,7 @@ function HouseUpload() {
             ...userFiles,
             [e.target.name]: value
         });
-    }
+    };
 
     const onFileSubmit = async e => {
         e.preventDefault();
@@ -75,25 +76,28 @@ function HouseUpload() {
                 console.log(err.response.data.msg);
             }
         }
-    }
+        showErr();
+    };
 
     return(
         <div className="house-upload">
             <h1>HouseUpload</h1>
-
+            <div id="err-msg" className="hide">
+                <ErrorMsg />
+            </div>
             <div className="house-input-info">
                 <form onSubmit={onFileSubmit}>
 
                     <label>Your House Address</label>
-                    <input type="text" name="address" required
+                    <input type="text" name="address"
                     value={userFiles.address} onChange={onHouseDataChange} 
                     />
                     <label>Your Phone number</label>
-                    <input type="number" name="phoneNumber" required
+                    <input type="number" name="phoneNumber"
                     value={userFiles.number} onChange={onHouseDataChange}
                     />
                     <label>Upload your House image</label>
-                    <input type="file" name="file" onChange={onFileChange} required/>
+                    <input type="file" name="file" onChange={onFileChange}/>
                     
                     <button>UpLoad</button>
                 </form>
@@ -101,9 +105,6 @@ function HouseUpload() {
                 <h1>{userFiles.address}</h1>
                 <img width="450px" src={userFiles.tempFile} alt="myfile" />
                 <h4>phone: {userFiles.phoneNumber}</h4>
-                <div className="err-msg">
-                    <ErrorMsg />
-                </div>
             </div>
         </div>
     );

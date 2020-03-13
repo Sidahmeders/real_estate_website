@@ -9,6 +9,8 @@ import MapSearch from './components/mapSearch.component';
 import HouseUpload from './components/houseUpload.component';
 import Login from './components/auth/login';
 import Register from './components/auth/registerModal';
+import ForgotPassword from './components/auth/forgotPassword';
+import ResetPassword from './components/auth/resetPassword';
 import UserDetails from './components/auth/userDetails';
 import AboutPage from './components/about.component';
 
@@ -19,8 +21,8 @@ import { tokenConfig } from './reducers/actions/authAction';
 function App() {
 
   const context = useContext(ContextConsumer);
-  const {dispatchAuth, dispatchErr, auth} = context;
-  console.log(auth)
+  const {dispatchAuth, dispatchErr, auth, err} = context;
+  console.log(auth, err)
 
   useEffect(() => {
     loadUser(dispatchAuth, dispatchErr, tokenConfig());
@@ -37,6 +39,8 @@ function App() {
             <Route path="/houseUpload" component={ HouseUpload } />
             <Route path="/login" component={Login} />
             <Route path="/register" component={ Register } />
+            <Route path="/forgotpassword" component={ ForgotPassword } />
+            <Route path="/resetpassword" component={ ResetPassword } />
             <Route path="/userDetails" component={ UserDetails } />
             <Route path="/about" component={ AboutPage } />
           </Switch>

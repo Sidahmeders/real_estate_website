@@ -1,10 +1,14 @@
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+.house-upload .hide {
+  display: none;
+}
+
+.house-upload input::-webkit-outer-spin-button,
+.house-upload input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type=number] {
+.house-upload input[type=number] {
   -moz-appearance: textfield;
 }
 /*# sourceMappingURL=houseUpload.css.map */

@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { registerUser } from '../../reducers/actions/authAction';
 import { ContextConsumer } from '../../context';
 import '../auth/styles/register/register.css';
@@ -22,7 +23,7 @@ function Register() {
     });
 
     const onUserDetailsChange = e => {
-        const value = e.target.value;
+        let value = e.target.value;
         setRegisterModal({
             ...registerModal,
             [e.target.name]: value
@@ -32,7 +33,12 @@ function Register() {
     const onFormSubmit = e => {
         e.preventDefault();
 
-        registerModal.isWaiting = true;
+        setRegisterModal(() => {
+            return {
+                ...registerModal,
+                isWaiting: true
+            }
+        });
         setTimeout(() => {
             setRegisterModal(() => {
                 return {
@@ -51,10 +57,10 @@ function Register() {
     return (
         <div className="register">
             <div className="register-modal">
-                <div>
-                    <div className="register-svg">
+                <div className="register-svg">
+                    <div className="register-svg-svg">
                     </div>
-                    <p style={{color:"#284", marginTop:"25px",textAlign:"center"}}>
+                    <p>
                       your data is safe and secure with JWT 
                     </p>
                 </div>
@@ -71,7 +77,7 @@ function Register() {
                         </div>
                         <div>
                             <label>Phone</label>
-                            <input type="number" name="phoneNumber" placeholder="phoneNumber" 
+                            <input type="number" name="phoneNumber" placeholder="phoneNumber"
                             value={registerModal.phoneNumber} onChange={onUserDetailsChange}/>
                         </div>
                         <div> 
@@ -109,15 +115,19 @@ function Register() {
                         }
                     </form> 
                 </div>
-                <div>
-                    <p style={{color:"#284",marginBottom:"20px",marginTop:"15px",textAlign:"center"}}>
+                <div className="house-svg">
+                    <p>
                       Add Update and Remove your House
                     </p>
-                    <div className="house-svg">
+                    <div className="house-svg-svg">
                     </div>
                 </div>
             </div>
-            <h2>Have an Account </h2><span>LogIn</span>
+            <div className="link">
+                <span>have an Account? </span>
+                <Link className="link" to="/login">Login</Link>
+            </div>
+           
         </div>
     );
 };

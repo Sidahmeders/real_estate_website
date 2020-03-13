@@ -15,19 +15,152 @@
           align-items: center;
 }
 
+.login-modal .hide {
+  display: none;
+}
+
 .login-modal h2 {
   color: grey;
   font-weight: 400;
 }
 
 .login-modal .login-svg {
-  width: 120px;
-  height: 159px;
-  background: url("../../../../homes-img/svgs/login.svg");
+  width: 200px;
+  height: 140px;
+  background: url("../../../../homes-img/svgs/login_auth.svg");
   background-size: contain;
 }
 
-.login-modal .hide {
-  display: none;
+.login-modal .login-form {
+  width: 50%;
+  margin-top: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login-modal .login-form form {
+  width: 100%;
+  background: #f0f0f0;
+  padding: 30px 20px;
+  border-radius: 10px;
+}
+
+.login-modal .login-form form div {
+  width: 96%;
+  height: 10vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login-modal .login-form form div label {
+  color: #4b4b4b;
+  font-size: 25px;
+  padding: 0 25px 0 20px;
+  float: left;
+}
+
+.login-modal .login-form form div input {
+  outline: none;
+  border: 1px solid #f0f0f0;
+  font-size: 24px;
+  background-color: #fafafa;
+  padding: 5px 10px;
+  float: right;
+  width: 68%;
+}
+
+.login-modal .login-form form button {
+  display: inline-block;
+  width: 140px;
+  height: 36px;
+  margin-top: 20px;
+  padding-bottom: 3px;
+  border: 0;
+  border-radius: 3px;
+  background: #0c9c60;
+  color: white;
+  font-size: 20px;
+  -webkit-transition: .8s ease;
+  transition: .8s ease;
+}
+
+.login-modal .login-form form button:hover {
+  cursor: pointer;
+  background: #3dca73;
+}
+
+.login-modal .login-form form ::-webkit-input-placeholder {
+  color: #979797;
+  font-weight: 100;
+}
+
+.login-modal .login-form form :-ms-input-placeholder {
+  color: #979797;
+  font-weight: 100;
+}
+
+.login-modal .login-form form ::-ms-input-placeholder {
+  color: #979797;
+  font-weight: 100;
+}
+
+.login-modal .login-form form ::placeholder {
+  color: #979797;
+  font-weight: 100;
+}
+
+.login-modal .link {
+  margin: 20px 0;
+  font-size: 18px;
+  color: #858585;
+}
+
+.login-modal .link .link {
+  font-size: 25px;
+  color: green;
+}
+
+.login-modal .forgot-password {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.login-modal .forgot-password-svg {
+  display: inline-block;
+  margin-top: 1em;
+  width: 70px;
+  height: 50px;
+  background: url("../../../../homes-img/svgs/forgot_password.svg");
+  background-size: contain;
+}
+
+.login-modal .forgot-password p {
+  color: #ac4f4f;
+  font-size: 18px;
+  -webkit-transition: .5s ease;
+  transition: .5s ease;
+}
+
+.login-modal .forgot-password:hover p {
+  color: red;
 }
 /*# sourceMappingURL=login.css.map */

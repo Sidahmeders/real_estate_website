@@ -22,7 +22,7 @@ function UserDetails() {
                 <div className="personal-info">
                     <h2>Name: {user.name}</h2>
                     <h2>Email: {user.email}</h2>
-                    <h2>register_since: {user.register_date}</h2>
+                    <h2>register_since: {user.register_date.split("T")[0]}</h2>
                     <h2>Phone: {user.phoneNumber}</h2>
                     <h2>UserType: {user.userType}</h2>
                     <h3 onClick={onLogOut} style={{color:"red",cursor:"pointer"}}>

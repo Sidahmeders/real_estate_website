@@ -9,7 +9,13 @@
           align-items: center;
 }
 
-.register .register-modal .register-svg {
+.register .register-modal .register-svg p {
+  color: #284;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.register .register-modal .register-svg-svg {
   background: url("../../../../homes-img/svgs/two_authentication.svg");
   background-size: contain;
   width: 200px;
@@ -17,6 +23,7 @@
 }
 
 .register .register-modal .register-form {
+  width: 500px;
   margin-top: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -34,8 +41,12 @@
   text-align: center;
 }
 
+.register .register-modal .register-form .hide {
+  display: none;
+}
+
 .register .register-modal .register-form h2 {
-  color: #18ce27;
+  color: #b4b4b4;
   font-size: 34px;
   font-weight: 400;
   margin-bottom: 5px;
@@ -49,16 +60,25 @@
 
 .register .register-modal .register-form form div {
   height: 10vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.register .register-modal .register-form form label {
+.register .register-modal .register-form form div label {
   color: #4b4b4b;
   font-size: 25px;
-  float: left;
   padding: 0 35px 0 20px;
+  float: left;
 }
 
-.register .register-modal .register-form form input {
+.register .register-modal .register-form form div input {
   outline: none;
   border: 1px solid #f0f0f0;
   padding: 5px 10px;
@@ -67,27 +87,33 @@
   float: right;
 }
 
-.register .register-modal .register-form form ::-webkit-input-placeholder {
+.register .register-modal .register-form form div input::-webkit-outer-spin-button,
+.register .register-modal .register-form form div input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.register .register-modal .register-form form div ::-webkit-input-placeholder {
   color: #979797;
   font-weight: 100;
 }
 
-.register .register-modal .register-form form :-ms-input-placeholder {
+.register .register-modal .register-form form div :-ms-input-placeholder {
   color: #979797;
   font-weight: 100;
 }
 
-.register .register-modal .register-form form ::-ms-input-placeholder {
+.register .register-modal .register-form form div ::-ms-input-placeholder {
   color: #979797;
   font-weight: 100;
 }
 
-.register .register-modal .register-form form ::placeholder {
+.register .register-modal .register-form form div ::placeholder {
   color: #979797;
   font-weight: 100;
 }
 
-.register .register-modal .register-form form select {
+.register .register-modal .register-form form div select {
   float: right;
   width: 60%;
   height: 35px;
@@ -135,15 +161,30 @@
   display: inline-block;
 }
 
-.register .register-modal .register-form .hide {
-  display: none;
-}
-
-.register .register-modal .house-svg {
+.register .register-modal .house-svg-svg {
   background: url("../../../../homes-img/svgs/add_house.svg");
   background-size: contain;
   width: 200px;
   height: 100px;
+}
+
+.register .register-modal .house-svg p {
+  color: #284;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.register .link {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 18px;
+  color: #858585;
+}
+
+.register .link .link {
+  color: #008316;
+  font-size: 25px;
 }
 
 @media (max-width: 850px) {
