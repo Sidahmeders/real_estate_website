@@ -8,23 +8,20 @@ function Home() {
 
   const [userLoc, setUserLoc] = useState({});
 
-  useEffect(() => {
-    let mounted = false;
-    if(!mounted) {
-      const fetchData = async () => {
-        try {
-         const userLoc = await axios.get('http://localhost:5000/userLocation');
-         setUserLoc(userLoc.data);
-        } catch(err) {
-          console.log(err)
-        }
-      }
-      fetchData();
+  
+  const fetchData = async () => {
+    try {
+      const userLoc = await axios.get('http://localhost:5000/userLocation');
+      setUserLoc(userLoc.data);
+    } catch(err) {
+      console.log(err)
     }
-    return () => mounted = true;
-  },[])
+  };
 
-  //! console.log(userLoc);
+  useEffect(() => {
+    fetchData();
+  }, []);
+  
   return(
       <div className="home-page">
 

@@ -7,7 +7,6 @@ function About() {
   const context = useContext(ContextConsumer);
   const usersInfo = context.houses.usersInfo;
   
-  // !console.log(context);
     return(
        <div className="about-page">
          <h1>THE ABOUT PAGE</h1>

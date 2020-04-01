@@ -48,7 +48,7 @@ function LoginModal() {
             });
             showErr();
         },3000);    
-    }
+    };
 
     return (
         <div className="login-modal">

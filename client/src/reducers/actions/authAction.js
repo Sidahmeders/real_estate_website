@@ -14,10 +14,10 @@ import {
 import { returnErr } from './errAction';
 
 
-export const loadUser = (dispatchAuth, dispatchErr, token) => {
+export const loadUser = (dispatchAuth, dispatchErr, config = tokenConfig) => {
     dispatchAuth({ type: USER_LOADING });
 
-    axios.get('http://localhost:5000/users/auth/user', token)
+    axios.get('http://localhost:5000/users/auth/user', config())
     .then(res => {
         dispatchAuth({
             type: USER_LOADED,
@@ -36,71 +36,66 @@ export const loadUser = (dispatchAuth, dispatchErr, token) => {
     });
 };
 
-export const registerUser = ({ name, phoneNumber, email, password, password2, userType }, dispatchAuth, dispatchErr) => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
+export const registerUser = (newUser, dispatchAuth, dispatchErr, config = tokenConfig) => {
+    const { name, phoneNumber, email, password, password2, userType } = newUser;
     const body = JSON.stringify({ name, phoneNumber, email, password, password2, userType });
 
-    axios.post('http://localhost:5000/users/register', body, config)
+    axios.post('http://localhost:5000/users/register', body, config())
     .then(res => dispatchAuth({
         type: REGISTER_SUCCESS,
         payload: res.data
     }))
     .catch(err => {
-        dispatchErr(returnErr(err.response.data, err.response.status));
-        dispatchAuth({ type: REGISTER_FAIL });
+        if(err.response === undefined) {
+            console.log(err);
+        } else {
+            dispatchErr(returnErr(err.response.data, err.response.status));
+            dispatchAuth({ type: REGISTER_FAIL });
+        }
     });
 };
 
-export const loginUser = ({email, password}, dispatchAuth, dispatchErr) => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
+export const loginUser = ({email, password}, dispatchAuth, dispatchErr, config = tokenConfig) => {
     const body = JSON.stringify({email, password});
 
-    axios.post('http://localhost:5000/users/auth', body, config)
+    axios.post('http://localhost:5000/users/auth', body, config())
     .then(res => dispatchAuth({
         type: LOGIN_SUCCESS,
         payload: res.data
     }))
     .catch(err => {
-        dispatchErr(returnErr(err.response.data, err.response.data));
-        dispatchAuth({ type: LOGIN_FAIL });
+        if (err.response === undefined) {
+            console.log(err);
+        } else {
+            dispatchErr(returnErr(err.response.data, err.response.data));
+            dispatchAuth({ type: LOGIN_FAIL });
+        }
     });
 };
 
-export const emailCheckout = (dispatchAuth, dispatchErr, email) => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
+export const emailCheckout = (dispatchAuth, dispatchErr, email, config = tokenConfig) => {
     const body = JSON.stringify({ email });
-    axios.post('http://localhost:5000/users/forgotpassword', body, config)
+
+    axios.post('http://localhost:5000/users/forgotpassword', body, config())
     .then(res => dispatchAuth({
         type: EMAIL_CHECKOUT_SUCCESS,
         payload: res.data
     }))
     .catch(err => {
-        dispatchErr(returnErr(err.response.data, err.response.status));
-        dispatchAuth({ type: EMAIL_CHECKOUT_FAIL });
+        if(err.response === undefined) {
+            console.log(err);
+        } else {
+            dispatchErr(returnErr(err.response.data, err.response.status));
+            dispatchAuth({ type: EMAIL_CHECKOUT_FAIL });
+        }
     });
 };
 
-export const passwordReset = (dispatchAuth , dispatchErr, pathName, {password, password2}) => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
+export const passwordReset = (dispatchAuth , dispatchErr, pathName, passwords, config = tokenConfig) => {
+    const {password, password2} = passwords;
     const body = JSON.stringify({ password, password2 });
 
-    axios.post(`http://localhost:5000/users/${pathName}`, body, config)
+    axios.post(`http://localhost:5000/users/${pathName}`, body, config())
     .then(res => console.log(res))
     .catch(err => {
         if(err.response === undefined) {

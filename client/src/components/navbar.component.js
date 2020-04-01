@@ -8,7 +8,7 @@ import { ContextConsumer } from '../context';
 function NavBar() {
 
   const context = useContext(ContextConsumer);
-  const {auth} = context;
+  const { auth } = context;
  
   let isTrue = false;
   const toggleMenu = () => {
@@ -101,8 +101,8 @@ function NavBar() {
            ) :
            (
              <div className="nav-links-items user-details">
-               <Link className="link" to="/userDetails">
-               </Link>
+               <a className="link" href="/userDetails">
+               </a>
                <span>{auth.user ? auth.user.name.split(' ')[0] : "..."}</span>
              </div>
            )

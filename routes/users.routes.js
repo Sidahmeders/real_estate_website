@@ -55,7 +55,8 @@ router.post('/register', (req, res) => {
                 .catch(err => console.log(err));
             });
         });
-    });
+    })
+    .catch(err => console.log(err)); 
 
 });
 
@@ -72,7 +73,7 @@ router.post('/auth', (req, res) => {
 
        bcrypt.compare(password, user.password)
        .then(match => {
-           if(!match) return res.status(400).json({msg: "invalid credentials"});
+           if(!match) return res.status(400).json({msg: "invalid Password"});
 
             jwt.sign(
                 { id: user.id },
@@ -92,7 +93,8 @@ router.post('/auth', (req, res) => {
             )
        })
        .catch(err => console.log(err));
-    });
+    })
+    .catch(err => console.log(err));
 
 });
 
@@ -183,7 +185,7 @@ router.post('/resetpassword/:token', async (req, res) => {
 
     } catch(err) {
         if(err) console.log(err);
-        return res.status(400).json({msg: "your token is unValid or has expired. please try Again"});
+        return res.status(400).json({msg: "your token is unvalid or has expired. please try Again"});
     }
 
 });

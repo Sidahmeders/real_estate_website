@@ -15,7 +15,6 @@ import UserDetails from './components/auth/userDetails';
 import AboutPage from './components/about.component';
 
 import { loadUser } from './reducers/actions/authAction';
-import { tokenConfig } from './reducers/actions/authAction';
 
 
 function App() {
@@ -25,7 +24,7 @@ function App() {
   console.log(auth, err)
 
   useEffect(() => {
-    loadUser(dispatchAuth, dispatchErr, tokenConfig());
+    loadUser(dispatchAuth, dispatchErr);
   },[]);
 
 
