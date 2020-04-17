@@ -35,7 +35,7 @@ function Home() {
               <div className="search-bar">
                 <input type="text" className="search-input" placeholder="search an address, neighborhood, or city" />
                 <Link to="/mapSearch" className="search-icon">
-                  <i className="fa fa-search"></i>
+                  {/* <i className="fa fa-search"></i> */}
                 </Link>
               </div>
             </div>
