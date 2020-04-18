@@ -78,7 +78,7 @@ function HouseUpload() {
         }
         showErr();
     };
-
+console.log(userFiles.file);
     return(
         <div className="house-upload">
             <h1>HouseUpload</h1>

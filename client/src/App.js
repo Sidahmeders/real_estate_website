@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ContextConsumer } from './context';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+// import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import NavBar from './components/navbar.component';
 import HomePage from './components/home.component';
