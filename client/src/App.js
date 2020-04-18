@@ -33,7 +33,7 @@ function App() {
         <div className="App">
           <NavBar />
           <Switch>
-            <Route path="/" component={ HomePage } />
+            <Route path="/" exact component={ HomePage } />
             <Route path="/mapSearch" component={ MapSearch } />
             <Route path="/houseUpload" component={ HouseUpload } />
             <Route path="/login" component={Login} />
