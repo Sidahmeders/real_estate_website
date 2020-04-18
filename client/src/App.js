@@ -32,8 +32,8 @@ function App() {
       <Router>
         <div className="App">
           <NavBar />
-          <Route path="/" exact  component={ HomePage } />
           <Switch>
+            <Route path="/" component={ HomePage } />
             <Route path="/mapSearch" component={ MapSearch } />
             <Route path="/houseUpload" component={ HouseUpload } />
             <Route path="/login" component={Login} />
