@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-// import '@fortawesome/fontawesome-free';
+import '@fortawesome/fontawesome-free';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ContextConsumer } from './context';
 
