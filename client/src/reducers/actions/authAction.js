@@ -17,7 +17,7 @@ import { returnErr } from './errAction';
 export const loadUser = (dispatchAuth, dispatchErr, config = tokenConfig) => {
     dispatchAuth({ type: USER_LOADING });
 
-    axios.get('http://localhost:5000/users/auth/user', config())
+    axios.get('/users/auth/user', config())
     .then(res => {
         dispatchAuth({
             type: USER_LOADED,
@@ -40,7 +40,7 @@ export const registerUser = (newUser, dispatchAuth, dispatchErr, config = tokenC
     const { name, phoneNumber, email, password, password2, userType } = newUser;
     const body = JSON.stringify({ name, phoneNumber, email, password, password2, userType });
 
-    axios.post('http://localhost:5000/users/register', body, config())
+    axios.post('/users/register', body, config())
     .then(res => dispatchAuth({
         type: REGISTER_SUCCESS,
         payload: res.data
@@ -58,7 +58,7 @@ export const registerUser = (newUser, dispatchAuth, dispatchErr, config = tokenC
 export const loginUser = ({email, password}, dispatchAuth, dispatchErr, config = tokenConfig) => {
     const body = JSON.stringify({email, password});
 
-    axios.post('http://localhost:5000/users/auth', body, config())
+    axios.post('/users/auth', body, config())
     .then(res => dispatchAuth({
         type: LOGIN_SUCCESS,
         payload: res.data
@@ -76,7 +76,7 @@ export const loginUser = ({email, password}, dispatchAuth, dispatchErr, config =
 export const emailCheckout = (dispatchAuth, dispatchErr, email, config = tokenConfig) => {
     const body = JSON.stringify({ email });
 
-    axios.post('http://localhost:5000/users/forgotpassword', body, config())
+    axios.post('/users/forgotpassword', body, config())
     .then(res => dispatchAuth({
         type: EMAIL_CHECKOUT_SUCCESS,
         payload: res.data
@@ -95,7 +95,7 @@ export const passwordReset = (dispatchAuth , dispatchErr, pathName, passwords, c
     const {password, password2} = passwords;
     const body = JSON.stringify({ password, password2 });
 
-    axios.post(`http://localhost:5000/users/${pathName}`, body, config())
+    axios.post(`/users/${pathName}`, body, config())
     .then(res => console.log(res))
     .catch(err => {
         if(err.response === undefined) {

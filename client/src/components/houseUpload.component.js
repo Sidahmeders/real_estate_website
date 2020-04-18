@@ -59,7 +59,7 @@ function HouseUpload() {
         }
 
         try {
-            const res = await axios.post('http://localhost:5000/uploads', fd, {
+            const res = await axios.post('/uploads', fd, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'x-auth-token': token

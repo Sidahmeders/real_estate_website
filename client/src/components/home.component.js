@@ -11,7 +11,7 @@ function Home() {
   
   const fetchData = async () => {
     try {
-      const userLoc = await axios.get('http://localhost:5000/userLocation');
+      const userLoc = await axios.get('/userLocation');
       setUserLoc(userLoc.data);
     } catch(err) {
       console.log(err)
