@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGODB_URI || uri, {
 .catch(err => console.log(err));
 mongoose.set('useCreateIndex', true);
 
-app.use('/', require('./routes/store.routes'));
+app.use('/store', require('./routes/store.routes'));
 app.use('/uploads', require('./routes/fileUpload.routes'));
 app.use('/userLocation', require('./routes/userLoc.routes'));
 app.use('/users', require('./routes/users.routes'));
