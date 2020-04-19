@@ -39,13 +39,12 @@ router.post('/', auth, async (req, res) => {
 
     const { file } = req.files;
     const binaryImgFile = file.data;
-    const base64String = new Buffer.from(binaryImgFile).toString('base64');
     const userHouseInfo = {...req.body, binaryImgFile};
     const newUserInfo = new UserInfo(userHouseInfo);
 
     try {
         await newUserInfo.save();
-        res.status(200).json({...req.body, base64String});
+        res.status(200).json({success: "user info saved"});
         console.log('userInfo saved successfully..');
     } catch(err) {
         if(err) throw err;

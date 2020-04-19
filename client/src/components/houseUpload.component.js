@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/houseUpload/houseUpload.css';
 import axios from 'axios';
@@ -57,17 +57,25 @@ function HouseUpload() {
         for(let file in userFiles) {
             fd.append(file, userFiles[file]);
         }
+        const res = await axios.post('/uploads', fd, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'x-auth-token': token
+            },
+            onUploadProgress: progressEvent => {
+                console.log('Upload progress:', Math.round(progressEvent.loaded / progressEvent.total * 100) + "%")
+            }
+        });
 
         try {
-            const res = await axios.post('/uploads', fd, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    'x-auth-token': token
-                }
-            });
-
             const {address, phoneNumber, base64String} = res.data;
             setUpLoadedFile({address, phoneNumber, base64String});
+            setUserFiles({
+                file: "",
+                tempFile: "",
+                address: "",
+                phoneNumber: ""
+            });
 
         } catch(err) {
             if(err) {
@@ -78,7 +86,12 @@ function HouseUpload() {
         }
         showErr();
     };
-console.log(userFiles.file);
+
+    const inputEl = useRef()
+    const focusInput = () => {
+        inputEl.current.click()
+    }
+
     return(
         <div className="house-upload">
             <h1>HouseUpload</h1>
@@ -97,7 +110,19 @@ console.log(userFiles.file);
                     value={userFiles.number} onChange={onHouseDataChange}
                     />
                     <label>Upload your House image</label>
-                    <input type="file" name="file" onChange={onFileChange}/>
+                    <input type="file" name="file" onChange={onFileChange} 
+                      ref={inputEl} style={{display:"none"}} />
+                    <p onClick={focusInput}
+                    style={{
+                        border:"2px solid blue",
+                        display:"inline-block",
+                        margin:"3px 30px",
+                        padding:"3px 6px",
+                        color:"blue",
+                        cursor:"pointer"
+                    }}>
+                        pick house Img
+                    </p>
                     
                     <button>UpLoad</button>
                 </form>
