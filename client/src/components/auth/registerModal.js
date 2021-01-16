@@ -61,7 +61,7 @@ function Register() {
                     <div className="register-svg-svg">
                     </div>
                     <p>
-                      your data is safe and secure with JWT 
+                      your data is safe and secure with RSA
                     </p>
                 </div>
                 <div className="register-form">

@@ -147,10 +147,35 @@
     }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 800px) {
     .register-modal {
-        flex-direction: column !important;
-        padding: 10px 50px !important;
+        flex-direction: column;
+
+        .register-form {
+            width: 100% !important;
+            form {
+                width: 80vw;
+                padding: 15px 20px !important;
+                div {
+                    height: 50px !important;
+                    input {
+                        width: 70vw;
+                        font-size: 18px !important;
+                    }
+                    label {
+                        display: none !important;
+                    }
+                    select {
+                        height: 30px !important;
+                    }
+                }
+                button {
+                    width: 90px !important;
+                    padding: 0 !important;
+                    font-size: 17px !important;
+                }
+            }
+        }
     }
 }
 

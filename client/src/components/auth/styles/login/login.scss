@@ -124,3 +124,15 @@
     
 }
 
+@media (max-width: 800px) {
+    .login-modal .login-form form {
+        width: 90vw;
+        input {
+            width: 100% !important;
+            font-size: 20px !important;
+        }
+        div label {
+            display: none;
+        }
+    }
+}

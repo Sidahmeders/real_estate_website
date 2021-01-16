@@ -15,7 +15,7 @@ app.use(fileUpload());
 
 const uri = process.env.DATABASE_KEY;
 mongoose.connect(process.env.MONGODB_URI || uri, { 
-    useNewUrlParser: true, 
+    useNewUrlParser: true,
     useUnifiedTopology: true }, () => {
     console.log('mongoDB connection is Up and running...')
 })

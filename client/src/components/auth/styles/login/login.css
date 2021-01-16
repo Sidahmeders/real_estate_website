@@ -173,4 +173,17 @@
 .login-modal .forgot-password:hover p {
   color: red;
 }
+
+@media (max-width: 800px) {
+  .login-modal .login-form form {
+    width: 90vw;
+  }
+  .login-modal .login-form form input {
+    width: 100% !important;
+    font-size: 20px !important;
+  }
+  .login-modal .login-form form div label {
+    display: none;
+  }
+}
 /*# sourceMappingURL=login.css.map */
