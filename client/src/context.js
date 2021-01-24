@@ -14,7 +14,7 @@ function ContextProvider(props) {
     const [houses, setHouses] = useState({});
 
     const fetchData = async () => {
-        const response = await axios.get('http://localhost:5000/uploads', {
+        const response = await axios.get('/uploads', {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }

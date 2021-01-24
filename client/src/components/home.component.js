@@ -11,7 +11,7 @@ function Home() {
   
   const fetchData = async () => {
     try {
-      const userLoc = await axios.get('http://localhost:5000/userLocation');
+      const userLoc = await axios.get('/userLocation');
       setUserLoc(userLoc.data);
     } catch(err) {
       console.log(err)
@@ -35,7 +35,7 @@ function Home() {
               <div className="search-bar">
                 <input type="text" className="search-input" placeholder="search an address, neighborhood, or city" />
                 <Link to="/mapSearch" className="search-icon">
-                  <i className="fa fa-search"></i>
+                  {/* <i className="fa fa-search"/> */}
                 </Link>
               </div>
             </div>
